@@ -1,0 +1,47 @@
+drop view playerdata;
+drop view compdata;
+drop view managerdata;
+drop view mmatchdata;
+drop view pmatchdata;
+drop view matchdata;
+
+
+create view playerdata as
+select distinct p.name,p.country,p.byear,p.position,
+n.fmatchday,n.num
+from player p,number n
+where p.id=n.player
+order by p.byear ASC,n.fmatchday ASC;
+
+create view compdata as
+select distinct c.year,c.rank,n.name
+from competition c,competitionname n
+where c.id=n.competition
+order by n.name DESC,c.year DESC;
+
+create view managerdata as
+select distinct m.name,m.country,m.byear
+from manager m
+order by m.byear ASC;
+
+create view mmatchdata as
+select distinct m.id,m.name as manager,n.name as competition,c.id as compid,c.year,c.rank,
+a.id as mid,a.name as match,a.enemy,a.goal,a.lost,a.date
+from manager m,competitionname n,competition c,match a
+where m.id=a.manager and n.competition=c.id and a.competition=c.id and a.year=c.year
+order by c.year ASC,a.date ASC;
+
+create view pmatchdata as
+select distinct p.id,p.name as player,p.position,m.date,n.name as competition,
+m.id as mid,m.name as match,c.id as compid,
+c.year,c.rank,m.enemy,m.goal as teamgoal,m.lost as teamlost,l.playtime,l.goal,l.yellow,l.red
+from player p,play l,match m,competitionname n,competition c
+where p.id=l.player and l.match=m.id and m.competition=n.competition and n.competition=c.id and c.year=m.year
+order by p.name ASC,m.date ASC;
+
+create view matchdata as
+select distinct n.name as cometition,c.year,m.name as match,m.enemy,m.goal,m.lost,m.date
+from competitionname n,competition c,match m
+where n.competition=c.id and m.competition=c.id and m.year=c.year
+order by m.date ASC;
+

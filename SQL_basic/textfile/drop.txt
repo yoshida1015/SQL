@@ -1,0 +1,14 @@
+drop view playerdata;
+drop view compdata;
+drop view managerdata;
+drop view mmatchdata;
+drop view pmatchdata;
+drop view matchdata;
+
+drop table player;
+drop table number;
+drop table play;
+drop table match;
+drop table competition;
+drop table competitionname;
+drop table manager;

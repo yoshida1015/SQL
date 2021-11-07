@@ -1,0 +1,4 @@
+select * from player;select * from
+play;select * from pimage;select * from number;select *
+from manager;select * from mimage;select * from match;select * from msort;select * from datedebug;select * from competition;select * from competitionname;select * from pmatchdata;select *
+from mmatchdata;select * from comp;

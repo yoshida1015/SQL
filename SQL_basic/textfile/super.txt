@@ -1,0 +1,158 @@
+players.ssql
+
+GENERATE HTML {
+{"players (A~Z)"}@{align='center',font-size=18,width=1000}!
+line(2)!
+[link1({(asc)p.name}@{width=200,align='center'},'Playerspage.ssql',p.id)!line(1)],5!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM  player  p;
+
+
+Playerspage.ssql
+
+foreach1 p.id
+GENERATE HTML {
+[
+line(2)!
+[{p.name}@{width=1010,align='center',font-size=20,height=50}]!!line(2)!
+{image(i.image,'./image')}@{width=600,align='center'}!line(2)!
+{[{{""}@{width=65},{"country:"}@{width=100,align='center'},{p.country}@{width=100},
+{"born:"}@{width=70,align='right'},{p.byear}@{width=100},
+{"position:"}@{width=100,align='center'},{p.position}@{width=50},{""}@{width=65},{"number:"}@{width=100,align='right'},
+[link({n.num}@{width=70,align='center'},'Numberpage',n.num),{"since "}@{width=50,align='center'},
+{n.fmatchday}@{width=100,align='center'},null((asc3)d.date)]!}@{align='center'}]!
+}@{width=1010}!line(2)!
+{""}@{height=50}!
+{'competition data'}@{width=1010,align='center',font-size=17}!line(2)!
+{[{"competition"}@{width=200,align='center'},{"year"}@{width=80,align='center'},{'match'}@{width=200},
+{"enemy"}@{width=220},{'G - L'}@{width=70},
+{'play'}@{width=50},{'goal'}@{width=48},{'Yc'}@{width=29},{'Rc'}@{width=30},{'date'}@{width=70,align='center'}]!}@{width=1010}!line(2)!
+{[{link({(desc1)a.competition}@{width=200,align='center'},"comp.ssql",a.compid)},[{link({(desc2)a.year}@{width=80,align='center'},'Matchdata.ssql',a.compid,a.year)},
+[link({a.match}@{width=200},'Matchpage.ssql',a.mid),{a.enemy}@{width=220},
+{a.teamgoal}@{width=10},{"-"}@{width=10},{a.teamlost}@{width=10},{""}@{width=30},
+{a.playtime}@{width=40},{a.goal}@{width=45,align='center'},{""}@{width=10},{a.yellow}@{width=30},{a.red}@{width=30},
+{a.date}@{width=100},null((asc4)b.date)!line(1)
+]!!line(2)]!]!}@{width=1010}]!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM  pmatchdata a, pimage i, player p,number n,datedebug d,datedebug b
+where  a.id=p.id and i.player=p.id and n.player=p.id and n.fmatchday=d.id and a.date=b.id;
+
+
+numbers.ssql
+
+GENERATE HTML {
+{"Numbers"}@{align='center',font-size=18,width=400}!
+line(2)!
+[link({(asc)n.num}@{width=40,align='center'},'Numberpage',n.num)!line(1)],10!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM number n;
+
+
+Numberpage.ssql
+
+foreach n.num
+GENERATE HTML {
+[{"Number"}@{width=200,align='center'},{"player"}@{width=200,align='center'},{"first match date"}@{width=200,align='center'}]!!line(2)!
+[{n.num}@{width=200,align='center'},link1({p.name}@{width=200,align='center'},'Playerspage.ssql',p.id),
+{n.fmatchday}@{width=200,align='center'},null((asc)d.date)!line(1)]!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM number n,player p,datedebug d
+where n.player=p.id and n.fmatchday=d.id;
+
+
+managers.ssql
+
+GENERATE HTML {
+{"managers (A~Z)"}@{align='center',font-size=18,width=200}!line(2)!
+[link({(asc)m.name}@{width=200,align='center'},'Managerpage.ssql',m.id)!line(1)]!
+}@{debug = 'off', pbgcolor ='white',table-align='center'}
+FROM  manager m;
+
+
+Managerpage.ssql
+
+foreach m.id
+GENERATE HTML {
+line(2)!
+[{m.name}@{width=800,align='center',font-size=20,height=50}]!!line(2)!
+[{image(i.image,'./image')}@{width=600,align='center'}!line(2)!
+{[{"country:"}@{width=100,align='center'},{m.country}@{width=200},
+{"born:"}@{width=70,align='right'},{m.byear}@{width=106}]!}@{width=800}!line(2)!
+{""}@{height=50}!
+{'competition data'}@{width=800,align='center',font-size=17}!line(2)!
+{[{"competition"}@{width=200,align='center'},{"year"}@{width=60,align='center'},{"rank"}@{width=50,align='center'},{'match'}@{width=180},
+{"enemy"}@{width=220},{'G - L'}@{width=70},
+{'date'}@{width=80,align='center'}]!}@{width=800}!line(2)!
+{[link({(desc1)a.competition}@{width=200},"comp.ssql",a.compid),
+[link({(DESC2)a.year}@{width=60,align='center'},'Matchdata.ssql',a.compid,a.year),
+{a.rank}@{width=50,align='center'},
+[link({a.match}@{width=180},'Matchpage.ssql',a.mid),{a.enemy}@{width=220},
+{{a.goal}@{width=10},{'-'}@{width=10},{a.lost}@{width=10}}@{width=30},{""}@{width=30},{a.date}@{width=80},
+null((asc)d.date)!line(1)]!!line(2)]!]!}@{width=800}]!}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM  mimage i,manager m,mmatchdata a,datedebug d
+where i.manager=m.id and m.id=a.id and a.date=d.id;
+
+
+compbf.ssql
+
+GENERATE HTML {
+{"competitions"}@{width=300,align='center',font-size=18}!
+line(2)!
+[link({(DESC1)c.name}@{width=300,height=50,align='center'},"comp.ssql",c.id)!line(1)]!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM comp c;
+
+
+comp.ssql
+
+foreach c.id
+GENERATE HTML {
+[[{"competition"}@{width=300,align='center'},{"year"}@{width=100,align='center'},{"rank"}@{width=50,align='center'}!line(2)]!!
+[{(DESC1)c.name}@{width=300,align='center'}]!,[link({(DESC2)c.year}@{width=100,align='center'},'Matchdata.ssql',c.id,c.year),
+{c.rank}@{width=50,align='center'}!line(1)]!!line(2)]!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM comp c;
+
+
+Matchdata.ssql
+
+foreach m.competition,m.year
+GENERATE HTML {
+[[link({c.name}@{height=50,width=250},"comp.ssql",c.id),'Year:',c.year,{""}@{width=50},'Rank:',c.rank!line(2)]!!
+[{{'match'}@{width=200},{'manager'}@{width=200},{'enemy'}@{width=200},{'G - L'}@{width=100},{'date'}@{width=100}}@{width=800}]!!line(2)!
+[{link({m.name}@{width=200},'Matchpage.ssql',m.id),link({n.name}@{width=200},'Managerpage.ssql',n.id),{m.enemy}@{width=200},
+{{m.goal}@{width=10,align='center'},{"-"}@{width=10},{m.lost}@{width=10,align='center'}}@{width=30},
+{""}@{width=40},{m.date}@{width=100,align='center'},null((asc1)d.date)}@{tableborder=0,width=770}!line(1)]!
+]!
+}@{debug='off',table-align='center',pbgcolor = 'white'}
+FROM match m,manager n,datedebug d,comp c
+where m.manager=n.id and m.date=d.id and m.competition=c.id and m.year=c.year;
+
+
+Matchpage.ssql
+
+foreach m.id
+GENERATE HTML {
+[{"competition"}@{width=220},{"year"}@{width=100},{"match"}@{width=200},
+{"enemy"}@{width=200},{'G - L'}@{width=100},{'date'}@{width=100}]!!line(2)!
+[link({c.name}@{width=220,height=50},"comp.ssql",c.id),link({(DESC2)c.year}@{width=100},'Matchdata.ssql',c.id,c.year),
+{m.name}@{width=200},{m.enemy}@{width=200},
+{{m.goal}@{width=10},{"-"}@{width=10},{m.lost}@{width=10},{""}@{width=50}}@{width=100},{m.date}@{width=100}]!!line(2)!
+{""}@{height=30}!
+[{"manager:"}@{width=100},link({a.name}@{width=200},'Managerpage.ssql',a.id)]!!
+{""}@{height=50}!
+[{"starting member"}@{width=200},{"playtime"}@{width=100,align='center'},{"goal"}@{width=100,align='center'},
+{"yellow"}@{width=100,align='center'},{"red"}@{width=100,align='center'}]!!line(2)!
+[link1({p.name}@{width=200},'Playerspage.ssql',p.id),{l.playtime}@{width=100,align='center'},{l.goal}@{width=100,align='center'},
+{l.yellow}@{width=100,align='center'},{l.red}@{width=100,align='center'},null((asc)s.sort)!line(1)]!!
+{""}@{height=30}!
+[{"bench member"}@{width=200},{"playtime"}@{width=100,align='center'},{"goal"}@{width=100,align='center'},
+{"yellow"}@{width=100,align='center'},{"red"}@{width=100,align='center'}]!!line(2)!
+[link1({p2.name}@{width=200},'Playerspage.ssql',p2.id),{l2.playtime}@{width=100,align='center'},{l2.goal}@{width=100,align='center'},
+{l2.yellow}@{width=100,align='center'},{l2.red}@{width=100,align='center'},null((asc)o.sort)!line(1)]!
+}@{debug = 'off', pbgcolor = 'white',table-align='center'}
+FROM  comp c,match m,manager a,player p,play l,msort s,player p2,play l2,msort o
+where c.id=m.competition and c.year=m.year and m.manager=a.id
+and m.id=l.match and p.id=l.player and m.id=s.match and p.id=s.player and s.sort<=11 
+and m.id=l2.match and p2.id=l2.player and m.id=o.match and p2.id=o.player and 12<=o.sort;
+

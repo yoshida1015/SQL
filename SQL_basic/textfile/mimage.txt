@@ -1,0 +1,7 @@
+drop table mimage;
+create table mimage(manager char(2),image varchar);
+insert into mimage values ('CA','CA.jpg');
+insert into mimage values ('RB','RB.jpg');
+insert into mimage values ('ZZ','ZZ.jpg');
+insert into mimage values ('JL','JL.jpg');
+insert into mimage values ('SS','SS.jpg');

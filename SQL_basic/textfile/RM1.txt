@@ -1,0 +1,14 @@
+SELECT *
+FROM player;
+SELECT *
+FROM number;
+SELECT *
+FROM match;
+SELECT *
+FROM play;
+SELECT *
+FROM competitionname;
+SELECT *
+FROM competition;
+SELECT *
+FROM manager;

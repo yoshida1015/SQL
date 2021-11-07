@@ -1,0 +1,5 @@
+drop view comp;
+create view comp as
+select c.id,n.name,c.year,c.rank
+from competition c,competitionname n
+where c.id=n.competition;

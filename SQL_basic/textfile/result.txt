@@ -1,0 +1,130 @@
+  id   |   title    | year | artist 
+-------+------------+------+--------
+ XJP01 | BLUE BLOOD | 1989 |      1
+ GLA01 | GLAY DRIVE | 2000 |      2
+ ABC01 | BLACK LIST | 2008 |      3
+(3 rows)
+
+  cd   | num | music 
+-------+-----+-------
+ XJP01 |   1 |  1001
+ XJP01 |   2 |  1002
+ XJP01 |   3 |  1003
+ XJP01 |   4 |  1004
+ XJP01 |   5 |  1005
+ XJP01 |   6 |  1006
+ GLA01 |   1 |  2001
+ GLA01 |   2 |  2002
+ GLA01 |   3 |  2003
+ GLA01 |   4 |  2004
+ GLA01 |   5 |  2005
+ GLA01 |   6 |  2006
+ ABC01 |   1 |  3001
+ ABC01 |   2 |  3002
+ ABC01 |   3 |  3003
+ ABC01 |   4 |  3004
+ ABC01 |   5 |  3005
+ ABC01 |   6 |  3006
+(18 rows)
+
+  id  | artist |         title          
+------+--------+------------------------
+ 1001 |      1 | PROLOGUE
+ 1002 |      1 | BLUE BLOOD
+ 1003 |      1 | WEEK END
+ 1004 |      1 | EASY FIGHT RAMBLING
+ 1005 |      1 | X
+ 1006 |      1 | ENDLESS RAIN
+ 2001 |      2 | 誘惑
+ 2002 |      2 | 生きがい
+ 2003 |      2 | ビリビリクラッシュメン
+ 2004 |      2 | BELOVED
+ 2005 |      2 | HAPPINESS
+ 2006 |      2 | サバイバル
+ 3001 |      3 | sins
+ 3002 |      3 | 少女の祈り
+ 3003 |      3 | SPELL MAGIC
+ 3004 |      3 | scar
+ 3005 |      3 | 愛してない
+ 3006 |      3 | Bit Stupid
+(18 rows)
+
+ id |       name        | fyear | num_of_members 
+----+-------------------+-------+----------------
+  1 | X JAPAN           |  1982 |              7
+  2 | GLAY              |  1988 |              4
+  3 | Acid Black Cherry |  2007 |              1
+(3 rows)
+
+ artist |  name   | byear 
+--------+---------+-------
+      1 | YOSHIKI |  1965
+      1 | Toshi   |  1965
+      1 | HIDE    |  1964
+      1 | PATA    |  1965
+      1 | HEATH   |  1968
+      1 | SUGIZO  |  1969
+      1 | TAIJI   |  1966
+      2 | TAKURO  |  1971
+      2 | TERU    |  1971
+      2 | HISASHI |  1972
+      2 | JIRO    |  1972
+      3 | yasu    |  1975
+(12 rows)
+
+   title    |        title        
+------------+---------------------
+ BLUE BLOOD | PROLOGUE
+ BLUE BLOOD | BLUE BLOOD
+ BLUE BLOOD | WEEK END
+ BLUE BLOOD | EASY FIGHT RAMBLING
+ BLUE BLOOD | X
+ BLUE BLOOD | ENDLESS RAIN
+(6 rows)
+
+ num |         title          
+-----+------------------------
+   1 | 誘惑
+   2 | 生きがい
+   3 | ビリビリクラッシュメン
+   4 | BELOVED
+   5 | HAPPINESS
+   6 | サバイバル
+(6 rows)
+
+    title    
+-------------
+ sins
+ 少女の祈り
+ SPELL MAGIC
+ scar
+ 愛してない
+ Bit Stupid
+(6 rows)
+
+  name   |  name   
+---------+---------
+ X JAPAN | YOSHIKI
+ X JAPAN | Toshi
+ X JAPAN | HIDE
+ X JAPAN | PATA
+ X JAPAN | HEATH
+ X JAPAN | SUGIZO
+ X JAPAN | TAIJI
+(7 rows)
+
+  name   
+---------
+ YOSHIKI
+ Toshi
+ HIDE
+ PATA
+ HEATH
+ TAIJI
+(6 rows)
+
+   title    
+------------
+ BLACK LIST
+(1 row)
+

@@ -1,0 +1,12 @@
+select *
+from playerdata;
+select *
+from compdata;
+select *
+from managerdata;
+select *
+from mmatchdata;
+select *
+from pmatchdata;
+select *
+from matchdata;

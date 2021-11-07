@@ -1,0 +1,4 @@
+drop table pimage;
+create table pimage(player char(4),image varchar);
+
+insert into pimage values('KN01','KN01.jpg')

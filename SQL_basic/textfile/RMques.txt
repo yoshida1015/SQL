@@ -1,0 +1,11 @@
+select *
+from playerdata p
+where p.name='Cristiano Ronaldo';
+
+select *
+from mmatchdata m
+where m.goal-m.lost>4;
+
+select p.player,p.goal,p.date,p.competition,p.match,p.enemy,p.teamgoal,p.teamlost
+from pmatchdata p
+where p.goal>=3;
