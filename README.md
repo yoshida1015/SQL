@@ -29,4 +29,4 @@
  http://user.keio.ac.jp/~ub301144/ssql/index.html  
  
  2019年から過去5年分のChampions League、及びClub World Cupに関するデータベース。  
- サイトに行き止まりがないように設計している。
+ ページに行き止まりがないように設計。
